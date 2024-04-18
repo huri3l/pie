@@ -11,6 +11,6 @@
 - [x] "taint" (server only)
 - [x] use next/image
 - [x] Routing/image page (parellel route)
+- [x] Analytics (posthog)
 - [ ] Delete button (w/ Server Actions)
-- [ ] Analytics (posthog)
 - [ ] Ratelimiting (upstash)
