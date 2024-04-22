@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     connectionString: env.POSTGRES_URL,
   },
-  tablesFilter: ["t3gallery_*"],
+  tablesFilter: ["pie_*"],
 } satisfies Config;

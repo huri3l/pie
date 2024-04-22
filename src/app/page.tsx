@@ -1,44 +1,36 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { Button } from "~/components/ui/button";
+import { Sparkle } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { getMyImages } from "~/server/queries";
-
-export const dynamic = "force-dynamic";
-
-async function Images() {
-  const images = await getMyImages();
-
-  return (
-    <div className="flex flex-wrap justify-center gap-4 p-4">
-      {images.map((image) => (
-        <div key={image.id} className="flex w-48 flex-col">
-          <Link href={`/img/${image.id}`}>
-            <Image
-              src={image.url}
-              width={192}
-              height={192}
-              className="object-contain"
-              alt={image.name}
-            />
-          </Link>
-          <div>{image.name}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default async function HomePage() {
   return (
-    <main>
-      <SignedOut>
-        <div className="h-full w-full text-center text-2xl">
-          Please sign in above
+    <div>
+      <h1>A Place For Your Art</h1>
+      <div className="flex">
+        <p>Personal Images Easier. A safe place for you to save your images.</p>
+        <div>
+          <Image
+            src="/statue.png"
+            width={191}
+            height={308}
+            alt="Michelangelo statue"
+          />
+          <Button>
+            <Sparkle />
+            <span>Start now</span>
+          </Button>
         </div>
-      </SignedOut>
-      <SignedIn>
-        <Images />
-      </SignedIn>
-    </main>
+        <p>
+          A family photo, a drawing - any image you want to store, you can use
+          Pie.
+        </p>
+      </div>
+      <footer>
+        <p>
+          Developed with love by
+          <a href="https://huriel.com.br/en-us">Huriel</a>
+        </p>
+      </footer>
+    </div>
   );
 }
