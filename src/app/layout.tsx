@@ -35,9 +35,9 @@ export default function RootLayout({
         <html lang="en">
           <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
           <body className={`font-sans ${inter.variable}`}>
-            <div className="grid h-screen grid-rows-[auto,1fr]">
+            <div className="px-2 sm:px-8 lg:px-36 2xl:mx-auto 2xl:max-w-[1300px]">
               <Header />
-              <main className="overflow-y-scroll">{children}</main>
+              <main>{children}</main>
             </div>
             {modal}
             <div id="modal-root" />

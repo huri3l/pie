@@ -4,8 +4,6 @@ function DecorativeBorder(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={227}
-      height={348}
       viewBox="0 0 227 348"
       fill="none"
       {...props}
