@@ -6,6 +6,7 @@ import Link from "next/link";
 import DecorativeCircles from "~/components/assets/decorative-circles";
 import DecorativeBlob from "~/components/assets/decorative-blob";
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { type ComponentProps } from "react";
 
 export default async function HomePage() {
   return (
@@ -14,80 +15,84 @@ export default async function HomePage() {
         <h1 className="mx-auto text-center text-3xl font-bold sm:w-[33rem] sm:text-6xl">
           A Place For Your Art
         </h1>
-        <p className="text-center sm:hidden">
-          Personal Images Easier. A safe place for you to save your images.
-        </p>
+        <Description className="text-center sm:hidden" />
       </div>
-      <div className="flex flex-row-reverse gap-4 sm:flex-row sm:gap-8">
-        <p className="mt-32 hidden text-right text-xl sm:flex">
-          Personal Images Easier. A safe place for you to save your images.
-        </p>
-        <div className="flex flex-col items-center gap-4">
-          <div className="relative flex items-center justify-center">
-            <DecorativeBorder className="hidden sm:flex sm:h-[582px]" />
-            <Image
-              src="/statue.png"
-              alt="Michelangelo statue"
-              width={320}
-              height={320}
-              className="w-[500px] rounded-full sm:absolute sm:w-[320px]"
-            />
-            <DecorativeBlob className="absolute bottom-0 left-0 -z-20 blur-3xl" />
-          </div>
-          <div className="hidden sm:flex">
-            <SignedOut>
-              <SignInButton>
-                <Button className="w-fit gap-2 bg-green-800 font-sans hover:bg-green-800/80 sm:flex">
-                  <Sparkle />
-                  <span>Start now</span>
-                </Button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <Link href="/gallery">
-                <Button className="w-fit gap-2 bg-green-800 font-sans hover:bg-green-800/80">
-                  <Sparkle />
-                  <span>Start now</span>
-                </Button>
-              </Link>
-            </SignedIn>
-          </div>
-        </div>
-        <div className="items-around flex flex-col-reverse justify-around sm:flex-col">
-          <DecorativeCircles className="ml-auto sm:ml-0 sm:mt-32" />
-          <p className="mt-8 text-right sm:mb-48 sm:mt-auto sm:text-left sm:text-xl">
-            A family photo, a drawing - any image you want to store, you can use
-            Pie.
-          </p>
-        </div>
-      </div>
-      <div className="mx-auto w-fit sm:hidden">
-        <SignedOut>
-          <SignInButton>
-            <Button className="mx-auto w-fit gap-2 bg-green-800 font-sans hover:bg-green-800/80">
-              <Sparkle />
-              <span>Start now</span>
-            </Button>
-          </SignInButton>
-        </SignedOut>
-        <SignedIn>
-          <Link href="/gallery">
-            <Button className="mx-auto w-fit gap-2 bg-green-800 font-sans hover:bg-green-800/80">
-              <Sparkle />
-              <span>Start now</span>
-            </Button>
-          </Link>
-        </SignedIn>
-      </div>
-      <footer className="fixed bottom-1 right-2 text-neutral-500">
-        <p>
-          Developed with love by
-          <Link href="https://huriel.com.br/en-us" target="_blank">
-            {" "}
-            Huriel
-          </Link>
-        </p>
-      </footer>
+      <Content />
+      <Cta />
+      <Footer />
     </div>
   );
 }
+
+const Content = () => {
+  return (
+    <div className="flex flex-row-reverse gap-4 sm:flex-row sm:gap-8">
+      <Description className="mt-32 hidden flex-1 text-right text-xl sm:flex" />
+      <div className="flex flex-1 flex-col items-center gap-4">
+        <div className="relative flex items-center justify-center">
+          <DecorativeBorder className="hidden h-[400px] duration-1000 animate-in fade-in sm:flex sm:h-[500px] md:h-[582px]" />
+          <Image
+            src="/statue.png"
+            alt="Michelangelo statue"
+            width={320}
+            height={320}
+            className="aspect-auto rounded-full duration-1000 animate-in fade-in sm:absolute sm:w-[280px] md:w-[320px]"
+          />
+          <DecorativeBlob className="absolute bottom-0 left-0 -z-20 blur-3xl" />
+        </div>
+      </div>
+      <div className="items-around flex flex-1 flex-col-reverse justify-around sm:flex-col">
+        <DecorativeCircles className="ml-auto sm:ml-0 sm:mt-32" />
+        <p className="mt-8 text-right sm:mb-48 sm:mt-auto sm:text-left sm:text-xl">
+          A family photo, a drawing - any image you want to store, you can use
+          Pie.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const Description = ({ className, ...props }: ComponentProps<"p">) => {
+  return (
+    <p className={className} {...props}>
+      Personal Images Easier. A safe place for you to save your images.
+    </p>
+  );
+};
+
+const Cta = () => {
+  return (
+    <div className="mx-auto w-fit">
+      <SignedOut>
+        <SignInButton>
+          <Button className="mx-auto w-fit gap-2 bg-green-800 font-sans duration-300 animate-in fade-in hover:bg-green-800/80">
+            <Sparkle />
+            <span>Start now</span>
+          </Button>
+        </SignInButton>
+      </SignedOut>
+      <SignedIn>
+        <Link href="/gallery">
+          <Button className="mx-auto w-fit gap-2 bg-green-800 font-sans duration-300 animate-in fade-in hover:bg-green-800/80">
+            <Sparkle />
+            <span>Start now</span>
+          </Button>
+        </Link>
+      </SignedIn>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer className="fixed bottom-1 right-2 text-neutral-500">
+      <p>
+        Developed with love by
+        <Link href="https://huriel.com.br/en-us" target="_blank">
+          {" "}
+          Huriel
+        </Link>
+      </p>
+    </footer>
+  );
+};
