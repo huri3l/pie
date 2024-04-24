@@ -1,43 +1,43 @@
-import { clerkClient } from "@clerk/nextjs/server";
 import { deleteImage, getImage } from "~/server/queries";
 import { Button } from "./ui/button";
+import { DownloadButton } from "~/app/gallery/_components/download-button";
+import { Trash2 } from "lucide-react";
+import { redirect } from "next/navigation";
 
 export default async function FullPageImageView(props: { id: number }) {
   const idAsNumber = Number(props.id);
-  if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo id");
+  if (Number.isNaN(idAsNumber)) redirect("/gallery/not-found");
 
   const image = await getImage(idAsNumber);
-  const uploaderInfo = await clerkClient.users.getUser(image.userId);
 
   return (
-    <div className="flex h-full w-full min-w-0 justify-between">
-      <div className="mx-auto flex flex-shrink items-center justify-center">
-        <img src={image.url} className="flex-shrink object-contain" />
-      </div>
-
-      <div className="flex w-48 flex-shrink-0 flex-col gap-2 border-l">
-        <div className="border-b p-2 text-center text-lg">{image.name}</div>
-        <div className="flex flex-col px-2">
-          <span>Uploaded By: </span>
-          <span>{uploaderInfo.fullName}</span>
+    <div className="h-full w-full">
+      <div className="flex flex-col items-center">
+        <div>
+          <strong>{image.name}</strong>
         </div>
-        <div className="flex flex-col px-2">
-          <span>Created on</span>
-          <span>{new Date(image.createdAt).toLocaleDateString()}</span>
-        </div>
-
-        <div className="p-2">
+        <div className="flex items-center gap-4 p-2">
+          <DownloadButton url={image.url} name={image.name} />
           <form
             action={async () => {
               "use server";
               await deleteImage(idAsNumber);
             }}
           >
-            <Button type="submit" variant="destructive">
-              Delete
+            <Button
+              type="submit"
+              variant="destructive"
+              className="flex items-center gap-2"
+            >
+              <Trash2 />
+              <span>Delete</span>
             </Button>
           </form>
         </div>
+      </div>
+      <div className="mx-auto flex flex-shrink items-center justify-center">
+        {/* eslint-disable-next-line */}
+        <img src={image.url} className="flex-shrink object-contain" />
       </div>
     </div>
   );

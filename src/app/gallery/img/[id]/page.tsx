@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import FullPageImageView from "~/components/full-image-page";
 
 export default function ImgPage({
@@ -6,7 +7,7 @@ export default function ImgPage({
   params: { id: string };
 }) {
   const idAsNumber = Number(photoId);
-  if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo id");
+  if (Number.isNaN(idAsNumber)) redirect("/gallery/not-found");
 
   return <FullPageImageView id={idAsNumber} />;
 }

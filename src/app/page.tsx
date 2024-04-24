@@ -10,7 +10,7 @@ import { type ComponentProps } from "react";
 
 export default async function HomePage() {
   return (
-    <div className="mt-12 space-y-8 font-serif">
+    <div className="space-y-8 font-serif">
       <div className="space-y-4">
         <h1 className="mx-auto text-center text-3xl font-bold sm:w-[33rem] sm:text-6xl">
           A Place For Your Art

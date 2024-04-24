@@ -1,8 +1,6 @@
 import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
-import { ImageDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "~/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
@@ -38,7 +36,7 @@ async function Images() {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
-                  <DownloadButton url={image.url} name={image.name} />
+                  <DownloadButton url={image.url} name={image.name} iconOnly />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Download</p>
@@ -59,7 +57,7 @@ export default async function GalleryPage() {
         <RedirectToSignIn />
       </SignedOut>
       <SignedIn>
-        <div className="mt-12">
+        <div>
           <h1 className="mb-6 text-center font-serif text-4xl font-bold">
             Your gallery
           </h1>

@@ -11,14 +11,14 @@ import { useEffect, useState } from "react";
 export function Header() {
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isGallery = pathname === "/gallery";
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   return (
-    <header className="flex justify-between border-b py-2">
+    <header className="mb-12 flex justify-between border-b py-2">
       <Link href="/">
         <Logo />
       </Link>
@@ -36,7 +36,7 @@ export function Header() {
         </SignedOut>
         <SignedIn>
           {isClient &&
-            (isHome ? (
+            (!isGallery ? (
               <Link href="/gallery">
                 <Button
                   variant="ghost"
@@ -53,7 +53,7 @@ export function Header() {
               </div>
             ))}
         </SignedIn>
-        {isHome && (
+        {!isGallery && (
           <Button variant="ghost">
             <Link
               href="https://github.com/huri3l/pie"
