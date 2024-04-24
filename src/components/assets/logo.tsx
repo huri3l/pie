@@ -1,6 +1,6 @@
-import { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 
-function Logo(props: ComponentProps<"svg">) {
+const Logo = (props: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,6 +20,6 @@ function Logo(props: ComponentProps<"svg">) {
       />
     </svg>
   );
-}
+};
 
 export default Logo;

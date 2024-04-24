@@ -1,6 +1,6 @@
-import { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 
-function DecorativeBlob(props: ComponentProps<"svg">) {
+const DecorativeBlob = (props: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,6 +13,6 @@ function DecorativeBlob(props: ComponentProps<"svg">) {
       <circle cx={55} cy={55} r={55} fill="#1D7D1C" />
     </svg>
   );
-}
+};
 
 export default DecorativeBlob;

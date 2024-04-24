@@ -8,7 +8,7 @@ import DecorativeBlob from "~/components/assets/decorative-blob";
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { type ComponentProps } from "react";
 
-export default async function HomePage() {
+const HomePage = () => {
   return (
     <div className="space-y-8 font-serif">
       <div className="space-y-4">
@@ -22,7 +22,9 @@ export default async function HomePage() {
       <Footer />
     </div>
   );
-}
+};
+
+export default HomePage;
 
 const Content = () => {
   return (

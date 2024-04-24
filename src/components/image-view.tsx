@@ -4,7 +4,7 @@ import { DownloadButton } from "~/app/gallery/_components/download-button";
 import { Trash2 } from "lucide-react";
 import { redirect } from "next/navigation";
 
-export default async function FullPageImageView(props: { id: number }) {
+const ImageView = async (props: { id: number }) => {
   const idAsNumber = Number(props.id);
   if (Number.isNaN(idAsNumber)) redirect("/gallery/not-found");
 
@@ -41,4 +41,6 @@ export default async function FullPageImageView(props: { id: number }) {
       </div>
     </div>
   );
-}
+};
+
+export default ImageView;

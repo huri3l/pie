@@ -28,7 +28,7 @@ const useUploadThingInputProps = (...args: Input) => {
   };
 };
 
-export function UploadButton() {
+export const UploadButton = () => {
   const router = useRouter();
   const posthog = usePostHog();
 
@@ -73,4 +73,4 @@ export function UploadButton() {
       />
     </Button>
   );
-}
+};

@@ -1,6 +1,6 @@
-import { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 
-function DecorativeCircles(props: ComponentProps<"svg">) {
+const DecorativeCircles = (props: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,6 +15,6 @@ function DecorativeCircles(props: ComponentProps<"svg">) {
       <circle cx={22} cy={57.2} r={21.5} stroke="#000" strokeOpacity={0.25} />
     </svg>
   );
-}
+};
 
 export default DecorativeCircles;

@@ -6,7 +6,7 @@ import { and, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import anaylitcsServerClient from "./analytics";
 
-export async function getMyImages() {
+export const getMyImages = async () => {
   const user = auth();
 
   if (!user.userId) throw new Error("Unauthorized");
@@ -15,9 +15,9 @@ export async function getMyImages() {
     where: (model, { eq }) => eq(model.userId, user.userId),
     orderBy: (model, { desc }) => desc(model.id),
   });
-}
+};
 
-export async function getImage(id: number) {
+export const getImage = async (id: number) => {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
@@ -31,9 +31,9 @@ export async function getImage(id: number) {
   if (image.userId !== user.userId) throw new Error("Unauthorized");
 
   return image;
-}
+};
 
-export async function deleteImage(id: number) {
+export const deleteImage = async (id: number) => {
   const user = auth();
   if (!user.userId) throw new Error("Unauthorized");
 
@@ -50,4 +50,4 @@ export async function deleteImage(id: number) {
   });
 
   redirect("/gallery");
-}
+};

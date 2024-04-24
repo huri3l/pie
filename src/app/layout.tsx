@@ -22,13 +22,13 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
   modal,
 }: {
   children: React.ReactNode;
   modal: React.ReactNode;
-}) {
+}) => {
   return (
     <ClerkProvider>
       <CSPostHogProvider>
@@ -47,4 +47,6 @@ export default function RootLayout({
       </CSPostHogProvider>
     </ClerkProvider>
   );
-}
+};
+
+export default RootLayout;

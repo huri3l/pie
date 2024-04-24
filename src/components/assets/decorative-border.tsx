@@ -1,6 +1,6 @@
-import { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 
-function DecorativeBorder(props: ComponentProps<"svg">) {
+const DecorativeBorder = (props: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -32,6 +32,6 @@ function DecorativeBorder(props: ComponentProps<"svg">) {
       </defs>
     </svg>
   );
-}
+};
 
 export default DecorativeBorder;

@@ -9,11 +9,11 @@ interface DownloadButtonProps {
   iconOnly?: boolean;
 }
 
-export function DownloadButton({
+export const DownloadButton = ({
   url,
   name,
   iconOnly = false,
-}: DownloadButtonProps) {
+}: DownloadButtonProps) => {
   const downloadImage = async () => {
     await fetch(url)
       .then((response) => response.blob())
@@ -36,4 +36,4 @@ export function DownloadButton({
       <span className={iconOnly ? "sr-only" : ""}>Download</span>
     </Button>
   );
-}
+};

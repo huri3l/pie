@@ -12,7 +12,7 @@ import { DownloadButton } from "./_components/download-button";
 
 export const dynamic = "force-dynamic";
 
-async function Images() {
+const Images = async () => {
   const images = await getMyImages();
 
   return (
@@ -48,9 +48,9 @@ async function Images() {
       ))}
     </div>
   );
-}
+};
 
-export default async function GalleryPage() {
+const GalleryPage = async () => {
   return (
     <main>
       <SignedOut>
@@ -66,4 +66,6 @@ export default async function GalleryPage() {
       </SignedIn>
     </main>
   );
-}
+};
+
+export default GalleryPage;

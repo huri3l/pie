@@ -1,10 +1,10 @@
-export default function GalleryLayout({
+const GalleryLayout = ({
   children,
   modal,
 }: {
   children: React.ReactNode;
   modal: React.ReactNode;
-}) {
+}) => {
   return (
     <div>
       {children}
@@ -12,4 +12,6 @@ export default function GalleryLayout({
       <div id="modal-root" />
     </div>
   );
-}
+};
+
+export default GalleryLayout;

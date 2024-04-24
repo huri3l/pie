@@ -1,18 +1,16 @@
 import { redirect } from "next/navigation";
 import { Modal } from "./modal";
-import FullPageImageView from "~/components/full-image-page";
+import ImageView from "~/components/image-view";
 
-export default function ImgModal({
-  params: { id: photoId },
-}: {
-  params: { id: string };
-}) {
+const ImgModal = ({ params: { id: photoId } }: { params: { id: string } }) => {
   const idAsNumber = Number(photoId);
   if (Number.isNaN(idAsNumber)) redirect("/gallery/not-found");
 
   return (
     <Modal>
-      <FullPageImageView id={idAsNumber} />
+      <ImageView id={idAsNumber} />
     </Modal>
   );
-}
+};
+
+export default ImgModal;

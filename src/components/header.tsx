@@ -8,7 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export function Header() {
+export const Header = () => {
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
   const isGallery = pathname === "/gallery";
@@ -68,22 +68,4 @@ export function Header() {
       </div>
     </header>
   );
-}
-
-// export function TopNav() {
-//   return (
-//     <nav className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
-//       <div>Gallery</div>
-
-//       <div className="flex flex-row items-center gap-4">
-//         <SignedOut>
-//           <SignInButton />
-//         </SignedOut>
-//         <SignedIn>
-//           <UploadButton />
-//           <UserButton />
-//         </SignedIn>
-//       </div>
-//     </nav>
-//   );
-// }
+};

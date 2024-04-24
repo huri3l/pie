@@ -9,15 +9,15 @@ if (typeof window !== "undefined") {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
   });
 }
-export function CSPostHogProvider({ children }: { children: ReactNode }) {
+export const CSPostHogProvider = ({ children }: { children: ReactNode }) => {
   return (
     <PostHogProvider client={posthog}>
       <PostHogAuthWrapper>{children}</PostHogAuthWrapper>
     </PostHogProvider>
   );
-}
+};
 
-function PostHogAuthWrapper({ children }: { children: ReactNode }) {
+const PostHogAuthWrapper = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
   const userInfo = useUser();
 
@@ -33,4 +33,4 @@ function PostHogAuthWrapper({ children }: { children: ReactNode }) {
   }, [auth, userInfo]);
 
   return children;
-}
+};
