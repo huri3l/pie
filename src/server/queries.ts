@@ -24,6 +24,7 @@ export const getImage = async (id: number) => {
   const image = await db.query.images.findFirst({
     where: (model, { eq }) => eq(model.id, id),
   });
+
   if (!image) {
     redirect("/gallery/not-found");
   }
